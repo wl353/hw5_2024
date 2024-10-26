@@ -13,9 +13,8 @@
 }
 
 #logo {
-    width: 475px;
-    opacity: 1;
-    animation: logo-move 5s forwards; /* only happen when page is loaded */
+    animation-name: logo-move;
+    animation-duration: 5s; /* only happen when page is loaded */
 }
 
 body {
@@ -126,6 +125,7 @@ nav a:visited {
 
     .pricing {
         align-items: end;
+        flex-wrap: nowrap;
     }
     .card {
         border: solid 2px #45ADDD;
