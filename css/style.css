@@ -1,0 +1,146 @@
+/* mobile view (default) */
+
+/* logo animation */
+@keyframes logo-move {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo {
+    width: 475px;
+    opacity: 1;
+    animation: logo-move 5s forwards; /* only happen when page is loaded */
+}
+
+body {
+    font-family: "Poppins", serif;
+    background-image: url("/images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+nav a:visited {
+    color: blue;
+}
+
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.card {
+    flex-basis: 450px; /* initial size */
+    border-top-left-radius: 50px; /* otherwise body background will be shown */
+    border-top-right-radius: 50px;
+}
+
+.pricing {
+    display: flex;
+    flex-direction: row; /* will affect the size of the elements */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* large screen view */
+@media screen and (min-width: 900px) {
+    header {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    .card {
+        flex-basis: 275px;
+    }
+
+    .pricing {
+        align-items: center;
+    }
+
+    body > header {
+        position: sticky; /* remains visible when users scroll down & also not removed from the flow */
+        top: 0; /* remains at the top of the screen */
+    }
+
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none; /* logo still appear but not animated */
+    }
+}
+
+/* print view */
+@media print and (orientation: portrait) {
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    header {
+        align-items: center;
+    }
+    
+    nav {
+        width: 100%; /* allow nav links to have space to justify content */
+    }
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .pricing {
+        align-items: end;
+    }
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* gallery section invisible for print */
+    #gallery {
+        display: none;
+    }
+    .gallery {
+        display: none;
+    }
+
+    .card li:nth-child(2)::after {
+        content: "👍"; /* only add after the 2nd li element */
+    }
+}
